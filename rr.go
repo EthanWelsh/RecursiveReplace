@@ -8,7 +8,6 @@ import (
 
 func main() {
 
-	
 	args := os.Args[1:]
 
 	old := args[0]
@@ -22,7 +21,6 @@ func main() {
 	for i:= range files {
 		replace(files[i], old, new) // replace all instances of the string old with new.
 	}
-	
 }
 
 // Perform the replace operation. Replace all instances of string 'old' with 'new' in and below the given 'filepath'
@@ -51,8 +49,6 @@ func exploreDir(dir string) string {
 	a, _ := ioutil.ReadDir(dir)
 	
 	for i:= range a {
-
-
 		if file != "" {
 			file += " "
 		}
