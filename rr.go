@@ -6,9 +6,6 @@ import (
 	"os"
 )
 
-
-
-
 func main() {
 
 	
@@ -18,15 +15,17 @@ func main() {
 	new := args[1]
 	dirName := args[2]
 
-	
+	// get a list of all files underneath the given one
 	files := getAllFilesUnderDir(dirName)
 
+	// for every file in this list...
 	for i:= range files {
-		replace(files[i], old, new)
+		replace(files[i], old, new) // replace all instances of the string old with new.
 	}
 	
 }
 
+// Perform the replace operation. Replace all instances of string 'old' with 'new' in and below the given 'filepath'
 func replace(filepath string, old string, new string) {
 
 	arr, _ := ioutil.ReadFile(filepath)
@@ -37,6 +36,7 @@ func replace(filepath string, old string, new string) {
 	ioutil.WriteFile(filepath, []byte(s), 0744)
 }
 
+// Given a directory, will return an array of filepaths to all files and directories under the given one.
 func getAllFilesUnderDir(dir string) []string {
 
 	s := exploreDir(dir)
@@ -44,6 +44,7 @@ func getAllFilesUnderDir(dir string) []string {
 	return strings.Split(s, " ")
 }
 
+// Given a directory, will return a space seperated list of every file in every level underneath that directory
 func exploreDir(dir string) string {
 	
 	file := ""
